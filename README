@@ -1,0 +1,78 @@
+
+########################## Install Play Java #############################################
+# install activator
+> brew install typesafe-activator
+
+> export PATH=$PATH:/Applications/INI_WORK/WORLNOW/activator-dist-1.3.6
+> echo $PATH
+
+# create CLIENT project
+> activator new client play-java
+
+# run
+> bash activator -Dhttp.port=9000 -Dplay.http.sslengineprovider=com.wn.util.SSLProviderImpl start
+
+# if Failed to bind to: /0.0.0.0:9000 then kill PID and start project again
+# OSX
+> lsof -i tcp:9000
+> kill PID
+# Linux
+> sudo netstat -lpn |grep :9000
+> kill PID
+
+# Netbean IDE
+# add NBPlay plugin
+
+########################## Anatomy #############################################
+app                      → Application sources
+ └ assets                → Compiled asset sources
+    └ stylesheets        → Typically SCSS CSS sources
+    └ javascripts        → Typically CoffeeScript sources
+ └ controllers           → Application controllers
+ └ models                → Application business layer
+ └ views                 → Templates
+build.sbt                → Application build script
+conf                     → Configurations files and other non-compiled resources (on classpath)
+ └ application.conf      → Main configuration file
+ └ routes                → Routes definition
+dist                     → Arbitrary files to be included in your projects distribution
+public                   → Public assets
+ └ stylesheets           → CSS files
+ └ javascripts           → Javascript files
+ └ images                → Image files
+project                  → sbt configuration files
+ └ build.properties      → Marker for sbt project
+ └ plugins.sbt           → sbt plugins including the declaration for Play itself
+lib                      → Unmanaged libraries dependencies
+logs                     → Logs folder
+ └ application.log       → Default log file
+target                   → Generated stuff
+ └ resolution-cache      → Info about dependencies
+ └ scala-2.10
+    └ api                → Generated API docs
+    └ classes            → Compiled class files
+    └ routes             → Sources generated from routes
+    └ twirl              → Sources generated from templates
+ └ universal             → Application packaging
+ └ web                   → Compiled web assets
+test                     → source folder for unit or functional tests
+
+
+
+########################## Typical .gitignore file #############################
+# Generated folders should be ignored by your version control system.
+# Here is the typical .gitignore file for a Play application:
+
+logs
+project/project
+project/target
+target
+tmp
+dist/
+.cache
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
