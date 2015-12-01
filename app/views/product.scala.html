@@ -1,0 +1,57 @@
+@(catalogs: List[Catalog], products: List[Product],entertaiments: List[Entertaiment])
+
+@main("Display Product "){
+	<h1>Welcome Product Show </h1>
+
+
+<div style="top: 5px;">
+<output> Catalog : </output>
+	<ul>
+	@if(catalogs.isEmpty) {
+	  <h1>Nothing to display</h1>
+	} else {
+		@for(catalog <- catalogs) {
+		  <li><output> Code Cata : </output><a href="">@catalog.codeCata </a> </li>  
+		  <li>@catalog.nameCata</li>  
+		}
+		}
+	</ul>
+</div>
+
+<div style="top: 150px;left:50px">
+	<output> Product : </output>
+	<ul>
+	@for(product <- products) {
+	  <li><a href="/product/@product.idProd">@product.idProd</a> </li>  
+	  <li>@product.codeProd @product.nameProd @product.typeProd</li>  
+	}
+	</ul>
+</div>
+
+<div style="top: 200px;left:100px">
+	<output> Attribute Products : </output>
+	<ul>
+	@for(product <- products) {
+		@for(attribute <- product.listAttribute){
+		  <li><a href="/@product.idProd/@attribute.idAttr">@product.codeProd @attribute.colorP @attribute.materialP @attribute.status</li>  
+	  	}
+	}
+	</ul>
+</div>
+
+<div style="top: 250px;left:150px">
+<output> Entertaiment : </output>
+	<ul>
+	@for(entertaiment <- entertaiments) {
+	  <li><output> ID : </output><a href="">@entertaiment.idEntertaiment </a> </li>  
+	  <li><output> Code Entertaiment : </output>@entertaiment.codeEntertaiment </li>  
+	  <li><output> Name Entertaiment : </output>@entertaiment.nameEntertaiment </li> 
+	  <li><output> Liked : </output>@entertaiment.liked </li> 
+	}
+	</ul>
+</div>
+
+
+
+
+}

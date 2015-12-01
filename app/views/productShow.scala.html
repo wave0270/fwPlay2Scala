@@ -1,0 +1,23 @@
+@* productShow Template File *@
+@(product:Product)
+
+@main("Hello World"){
+	@if(product.idProd.toString() == "") {
+	  <h1>Nothing to display</h1>
+	} else {
+		<a href="#"> Do you want click me ? </a> </br>
+		<output >Name Catalogy: @product.catalogID.nameCata </output></br>
+		<output >Code Product: @product.codeProd </output></br>
+		<output >Name Product: @product.nameProd </output></br>
+		<output >Type Product: @product.typeProd</output></br>
+		<div style="top: 200px;left:100px">
+		<output> Attribute Products : </output>
+		<ul>	
+			@for(attribute <- product.listAttribute){
+			  <li>@attribute.colorP @attribute.materialP @attribute.status</li>  
+		  	}	
+		</ul>
+		</div>
+	}
+	}
+	
