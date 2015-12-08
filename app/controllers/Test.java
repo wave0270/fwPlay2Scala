@@ -8,12 +8,16 @@ import views.html.*;
 
 public class Test extends Controller {
 
-    public Result index() {
-        Logger.info("Current Domain:" + Global._DOMAIN);
-        return ok(index.render("Your new application is ready.!!!!!!! - " + Global._DOMAIN));
+    public Result test() {
+        return ok("test basic");
     }
-    public Result main() {
-        return ok("Binh test");
+    public Result test2(String name) {
+        return ok(name);
     }
-
+    public Result test3() {
+        return redirect("/test");
+    }
+    public Result test4(String page) {
+        return ok(page);
+    }
 }

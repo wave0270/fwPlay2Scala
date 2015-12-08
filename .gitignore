@@ -1,9 +1,12 @@
 logs
+project/.sbtserver
+project/.sbtserver.lock
 project/project
 project/target
 target
 tmp
 dist/
+.sbtserver
 .cache
 /.idea
 /.idea_modules

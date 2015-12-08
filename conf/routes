@@ -9,7 +9,12 @@ GET     /                           controllers.Application.index()
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
 # test
-GET     /main                       controllers.Test.main()
+GET     /test                       controllers.Test.test()
+GET     /test2                     controllers.Test.test2(name)
+GET     /test3                       controllers.Test.test3()
 
-GET     /product                       controllers.ProductController.redirectProductPage()
+# Extract the page parameter from the path.
+# i.e. http://myserver.com/index
+GET     /test4/:page                      controllers.Test.test4(page)
+
 
